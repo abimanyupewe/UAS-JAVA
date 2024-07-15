@@ -33,25 +33,29 @@ public class NoteAppMenu {
                     break;
                 case 4:
                     exit = true;
+                    System.out.println("===========================================[ Teimakasih ]============================================");
                     break;
                 default:
-                    System.out.println("Pilihan tidak valid, coba lagi.");
+                    System.out.println("\n\tPilihan tidak valid!!!, coba lagi.");
             }
         }
     }
 
     private void showMenu() {
-        System.out.println("\nMenu:");
+        System.out.println("=".repeat(100));
+        System.out.println("=======================================[ Silakan Pilih Menu ]==========================================");
+        System.out.println("Menu:");
         System.out.println("1. Tambah Catatan");
         System.out.println("2. Tampilkan Catatan");
         System.out.println("3. Hapus Catatan");
         System.out.println("4. Keluar");
-        System.out.print("Pilih opsi: ");
+        System.out.println("=".repeat(100));
+        System.out.print("\nPilih opsi: ");
     }
 
     private int getUserChoice() {
         while (!scanner.hasNextInt()) {
-            System.out.print("Harap masukkan angka yang valid: ");
+            System.out.print("\n\tHarap masukkan angka yang valid: ");
             scanner.next();
         }
         return scanner.nextInt();
@@ -59,17 +63,20 @@ public class NoteAppMenu {
 
     private void addNote() {
         scanner.nextLine(); // Clear buffer
-        System.out.print("Masukkan catatan: ");
+        System.out.println("=".repeat(100));
+        System.out.print("\nMasukkan catatan: ");
         String note = scanner.nextLine();
         noteService.createNote(note);
-        System.out.println("Catatan disimpan: " + note);
+        System.out.println("=".repeat(100));
+        System.out.println("\nCatatan disimpan : " + note);
     }
 
     private void showNotes() {
         List<String> notes = noteService.readNotes();
+        System.out.println("=".repeat(100));
         System.out.println("Catatan tersimpan:");
         if (notes.isEmpty()) {
-            System.out.println("Tidak ada catatan.");
+            System.out.println("\n\tBelum ada catatan, Silahkan buat catatan dahulu. \n");
         } else {
             for (int i = 0; i < notes.size(); i++) {
                 System.out.println((i + 1) + ". " + notes.get(i));
@@ -80,14 +87,15 @@ public class NoteAppMenu {
     private void deleteNote() {
         showNotes();
         if (noteService.getNoteCount() > 0) {
-            System.out.print("Pilih nomor catatan yang akan dihapus: ");
+            System.out.println("=".repeat(100));
+            System.out.print("\nPilih nomor catatan yang akan dihapus: ");
             int noteIndex = getUserChoice() - 1;
             if (noteIndex >= -1 && noteIndex < noteService.getNoteCount()) {
                 String note = noteService.getNoteByIndex(noteIndex);
                 noteService.deleteNote(note);
-                System.out.println("Catatan dihapus: " + note);
+                System.out.println("\n\tCatatan dihapus: " + note);
             } else {
-                System.out.println("Nomor catatan tidak valid.");
+                System.out.println("\n\tNomor catatan tidak valid.");
             }
         }
     }
