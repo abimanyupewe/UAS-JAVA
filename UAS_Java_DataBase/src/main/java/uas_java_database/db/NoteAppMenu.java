@@ -43,6 +43,8 @@ public class NoteAppMenu {
 
     private void showMenu() {
         System.out.println("=".repeat(100));
+        System.out.println("=================[ Abimanyu Priyo Widagdo ]=====================");
+        System.out.println("========================[ 23201245 ]===========================");
         System.out.println("=======================================[ Silakan Pilih Menu ]==========================================");
         System.out.println("Menu:");
         System.out.println("1. Tambah Catatan");
