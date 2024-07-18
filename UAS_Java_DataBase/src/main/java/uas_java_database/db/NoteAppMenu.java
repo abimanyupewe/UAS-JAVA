@@ -92,7 +92,7 @@ public class NoteAppMenu {
             System.out.println("=".repeat(100));
             System.out.print("\nPilih nomor catatan yang akan dihapus: ");
             int noteIndex = getUserChoice() - 1;
-            if (noteIndex >= -1 && noteIndex < noteService.getNoteCount()) {
+            if (noteIndex >= 0 && noteIndex < noteService.getNoteCount()) {
                 String note = noteService.getNoteByIndex(noteIndex);
                 noteService.deleteNote(note);
                 System.out.println("\n\tCatatan dihapus: " + note);
